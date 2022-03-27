@@ -7,7 +7,6 @@
     "require": {
         "php": "^8.0.2",
         "bensampo/laravel-enum": "^5.2",
-        "coderello/laravel-nova-lang": "^1.8",
         "digital-creative/collapsible-resource-manager": "^1.4",
         "ek0519/quilljs": "^0.5.0",
         "genealabs/nova-map-marker-field": "^0.4.1",

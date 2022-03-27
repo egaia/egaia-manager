@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f8c4c6483e6c69a8da1003ec871e5e0",
+    "content-hash": "534b81f116a11d46b764c1df54e79085",
     "packages": [
         {
             "name": "bensampo/laravel-enum",
@@ -269,62 +269,6 @@
                 "source": "https://github.com/cakephp/chronos"
             },
             "time": "2021-10-17T02:44:05+00:00"
-        },
-        {
-            "name": "coderello/laravel-nova-lang",
-            "version": "1.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/coderello/laravel-nova-lang.git",
-                "reference": "afb07f899ed8362a7377012c3ed8bbb9975167b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coderello/laravel-nova-lang/zipball/afb07f899ed8362a7377012c3ed8bbb9975167b6",
-                "reference": "afb07f899ed8362a7377012c3ed8bbb9975167b6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1|^8.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "illuminate/console": "^8.0",
-                "illuminate/events": "^8.0",
-                "illuminate/filesystem": "^8.0",
-                "laravel/nova": "~3.0",
-                "php": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Coderello\\LaravelNovaLang\\Providers\\LaravelNovaLangServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Coderello\\LaravelNovaLang\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Language support for Laravel Nova.",
-            "keywords": [
-                "lang",
-                "language",
-                "laravel",
-                "nova",
-                "support"
-            ],
-            "support": {
-                "issues": "https://github.com/coderello/laravel-nova-lang/issues",
-                "source": "https://github.com/coderello/laravel-nova-lang/tree/1.8.1"
-            },
-            "time": "2021-12-03T18:07:54+00:00"
         },
         {
             "name": "composer/ca-bundle",
