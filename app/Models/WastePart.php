@@ -20,7 +20,7 @@ class WastePart extends Model
     ];
 
     public function wastes(): BelongsToMany {
-        return $this->belongsToMany(Waste::class)
+        return $this->belongsToMany(Waste::class, 'waste_pivot_part')
             ->using(WastePivotPart::class);
     }
 
