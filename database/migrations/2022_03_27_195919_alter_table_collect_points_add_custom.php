@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('wastes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('image');
-            $table->foreignId('waste_category_id')->constrained('waste_categories')->restrictOnDelete();
-            $table->timestamps();
+        Schema::table('collect_points', function (Blueprint $table) {
+            $table->boolean('custom')->default(true)->after('type');
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('waste');
+        Schema::table('collect_points', function (Blueprint $table) {
+            //
+        });
     }
 };

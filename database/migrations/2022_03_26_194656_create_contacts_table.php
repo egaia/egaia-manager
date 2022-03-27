@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('wastes', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('image');
-            $table->foreignId('waste_category_id')->constrained('waste_categories')->restrictOnDelete();
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('email');
+            $table->string('subject');
+            $table->longText('message');
+            $table->timestamp('archived_at')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('waste');
+        Schema::dropIfExists('contacts');
     }
 };
