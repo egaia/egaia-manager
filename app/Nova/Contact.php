@@ -2,36 +2,30 @@
 
 namespace App\Nova;
 
-use App\Nova\Fields\ChallengeUserFields;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Date;
+use Inspheric\Fields\Indicator;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 
-class User extends Resource
+class Contact extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\User::class;
+    public static $model = \App\Models\Contact::class;
 
     public function title()
     {
-        return $this->resource->firstname . ' ' . $this->resource->lastname;
+        return $this->firstname.' '.$this->lastname;
     }
 
     public static function label()
     {
-        return 'Utilisateurs';
+        return 'Contacts';
     }
 
     /**
@@ -40,13 +34,13 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'firstname', 'lastname', 'birthdate', 'points', 'email',
+        'id', 'firstname', 'lastname', 'email', 'subject', 'message'
     ];
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
@@ -62,43 +56,39 @@ class User extends Resource
                 ->rules('required', 'string', 'max:255')
                 ->sortable(),
 
-            Date::make('Date de naissance', 'birthdate')
-                ->rules('required', 'date')
-                ->sortable(),
-
-            Number::make('Points', 'points')
-                ->rules('required', 'integer')
-                ->sortable(),
-
             Text::make('Email', 'email')
                 ->rules('required', 'email', 'max:255')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}')
                 ->sortable(),
 
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
+            Text::make('Objet', 'subject')
+                ->rules('required', 'string', 'max:255')
+                ->sortable(),
 
-            DateTime::make('Inscrit le', 'created_at')
-                ->format('DD/MM/Y')
+            Textarea::make('Message', 'message')
+                ->rules('required', 'string')
+                ->sortable(),
+
+            DateTime::make('Date', 'created_at')
+                ->format('DD/MM/Y HH:mm')
                 ->sortable()
                 ->readonly(),
 
-            DateTime::make('Dernière connexion', 'last_login_at')
-                ->format('DD/MM/Y')
-                ->sortable()
-                ->readonly(),
-
-            HasMany::make('Participations aux défis', 'challengeUsers', ChallengeUser::class),
+            Indicator::make('Archivé ?', 'is_archived')
+                ->labels([
+                    'true' => 'Archivé',
+                    'false' => 'Non archivé',
+                ])
+                ->colors([
+                    'true' => 'red',
+                    'false' => 'green',
+                ]),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -109,7 +99,7 @@ class User extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -120,7 +110,7 @@ class User extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -131,7 +121,7 @@ class User extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)

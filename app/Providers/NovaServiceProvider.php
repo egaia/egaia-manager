@@ -2,6 +2,20 @@
 
 namespace App\Providers;
 
+use App\Nova\Admin;
+use App\Nova\Category;
+use App\Nova\Challenge;
+use App\Nova\ChallengeUser;
+use App\Nova\CollectPoint;
+use App\Nova\Contact;
+use App\Nova\Post;
+use App\Nova\TrashCan;
+use App\Nova\User;
+use App\Nova\Waste;
+use App\Nova\WasteCategory;
+use App\Nova\WastePart;
+use DigitalCreative\CollapsibleResourceManager\CollapsibleResourceManager;
+use DigitalCreative\CollapsibleResourceManager\Resources\TopLevelResource;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
@@ -77,7 +91,44 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            new CollapsibleResourceManager([
+                'navigation' => [
+                    TopLevelResource::make([
+                        'label' => 'Tri',
+                        'resources' => [
+                            WasteCategory::class,
+                            Waste::class,
+                            WastePart::class,
+                            TrashCan::class,
+                            CollectPoint::class
+                        ]
+                    ]),
+                    TopLevelResource::make([
+                        'label' => 'Défis',
+                        'resources' => [
+                            Challenge::class,
+                            ChallengeUser::class
+                        ]
+                    ]),
+                    TopLevelResource::make([
+                        'label' => 'Blog',
+                        'resources' => [
+                            Category::class,
+                            Post::class
+                        ]
+                    ]),
+                    TopLevelResource::make([
+                        'label' => 'Utilisateurs',
+                        'resources' => [
+                            Admin::class,
+                            User::class,
+                            Contact::class
+                        ]
+                    ])
+                ]
+            ])
+        ];
     }
 
     /**

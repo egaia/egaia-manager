@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bbb6308afdd8f4ffb89c7a70b779f47",
+    "content-hash": "2f8c4c6483e6c69a8da1003ec871e5e0",
     "packages": [
         {
             "name": "bensampo/laravel-enum",
@@ -950,6 +950,59 @@
             "time": "2021-08-13T13:06:58+00:00"
         },
         {
+            "name": "digital-creative/collapsible-resource-manager",
+            "version": "v1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dcasia/collapsible-resource-manager.git",
+                "reference": "94fdb29964d4b1efad77bf5e778043bb76dddb5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dcasia/collapsible-resource-manager/zipball/94fdb29964d4b1efad77bf5e778043bb76dddb5b",
+                "reference": "94fdb29964d4b1efad77bf5e778043bb76dddb5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DigitalCreative\\CollapsibleResourceManager\\CollapsibleResourceManagerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DigitalCreative\\CollapsibleResourceManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Milewski"
+                }
+            ],
+            "description": "A custom sidebar menu with collapsible groups",
+            "keywords": [
+                "collapse",
+                "collapsible",
+                "laravel",
+                "nova",
+                "sidebar"
+            ],
+            "support": {
+                "issues": "https://github.com/dcasia/collapsible-resource-manager/issues",
+                "source": "https://github.com/dcasia/collapsible-resource-manager/tree/v1.4.2"
+            },
+            "time": "2022-02-05T17:07:28+00:00"
+        },
+        {
             "name": "doctrine/cache",
             "version": "2.1.1",
             "source": {
@@ -1593,6 +1646,51 @@
             "time": "2021-10-11T09:18:27+00:00"
         },
         {
+            "name": "ek0519/quilljs",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ek0519/nova-quilljs.git",
+                "reference": "abfda9e2f36960df8c982738cc3ef663fa06b7fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ek0519/nova-quilljs/zipball/abfda9e2f36960df8c982738cc3ef663fa06b7fc",
+                "reference": "abfda9e2f36960df8c982738cc3ef663fa06b7fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ek0519\\Quilljs\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ek0519\\Quilljs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/ek0519/nova-quilljs/issues",
+                "source": "https://github.com/ek0519/nova-quilljs/tree/0.5.0"
+            },
+            "time": "2021-11-22T07:38:26+00:00"
+        },
+        {
             "name": "fruitcake/php-cors",
             "version": "v1.2.0",
             "source": {
@@ -1662,6 +1760,59 @@
                 }
             ],
             "time": "2022-02-20T15:07:15+00:00"
+        },
+        {
+            "name": "genealabs/nova-map-marker-field",
+            "version": "0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/nova-map-marker-field.git",
+                "reference": "876690787ed8bbfe85fb4c98d726e6e621b81434"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/nova-map-marker-field/zipball/876690787ed8bbfe85fb4c98d726e6e621b81434",
+                "reference": "876690787ed8bbfe85fb4c98d726e6e621b81434",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^9.0",
+                "laravel/nova": "^3.31",
+                "symfony/thanks": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GeneaLabs\\NovaMapMarkerField\\Providers\\Service"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\NovaMapMarkerField\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/GeneaLabs/nova-map-marker-field/issues",
+                "source": "https://github.com/GeneaLabs/nova-map-marker-field/tree/0.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mikebronner",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-07T12:22:41+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -2047,6 +2198,54 @@
                 }
             ],
             "time": "2022-03-20T21:55:58+00:00"
+        },
+        {
+            "name": "inspheric/nova-indicator-field",
+            "version": "v1.43",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inspheric/nova-indicator-field.git",
+                "reference": "256a2b7eb1febb7b829cd1a86adf6fe6e048354b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inspheric/nova-indicator-field/zipball/256a2b7eb1febb7b829cd1a86adf6fe6e048354b",
+                "reference": "256a2b7eb1febb7b829cd1a86adf6fe6e048354b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Inspheric\\Fields\\IndicatorFieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Inspheric\\Fields\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova indicator field.",
+            "keywords": [
+                "field",
+                "indicator",
+                "laravel",
+                "nova",
+                "status"
+            ],
+            "support": {
+                "issues": "https://github.com/inspheric/nova-indicator-field/issues",
+                "source": "https://github.com/inspheric/nova-indicator-field/tree/master"
+            },
+            "time": "2020-01-24T12:55:36+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -4415,6 +4614,73 @@
             "time": "2021-12-10T11:20:11+00:00"
         },
         {
+            "name": "simplesquid/nova-enum-field",
+            "version": "v2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplesquid/nova-enum-field.git",
+                "reference": "3b1fe953eb75b378963a41c813b2fac36eba989c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplesquid/nova-enum-field/zipball/3b1fe953eb75b378963a41c813b2fac36eba989c",
+                "reference": "3b1fe953eb75b378963a41c813b2fac36eba989c",
+                "shasum": ""
+            },
+            "require": {
+                "bensampo/laravel-enum": "^3.1|^4.0|^5.0",
+                "illuminate/support": "^8.0|^9.0",
+                "laravel/nova": "^3.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "joshgaber/novaunit": "^2.2",
+                "mockery/mockery": "^1.3.3",
+                "nunomaduro/collision": "^5.2|^6.1",
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.3.3",
+                "symfony/var-dumper": "^5.0|^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SimpleSquid\\Nova\\Fields\\Enum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Poulter",
+                    "email": "matthew.poulter@simplesquid.co.za",
+                    "homepage": "https://simplesquid.co.za/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Nova field to add enums to resources.",
+            "homepage": "https://github.com/simplesquid/nova-enum-field",
+            "keywords": [
+                "enum",
+                "field",
+                "laravel",
+                "nova",
+                "nova-enum-field",
+                "simplesquid"
+            ],
+            "support": {
+                "issues": "https://github.com/simplesquid/nova-enum-field/issues",
+                "source": "https://github.com/simplesquid/nova-enum-field/tree/v2.6.0"
+            },
+            "time": "2022-02-21T22:37:03+00:00"
+        },
+        {
             "name": "spatie/once",
             "version": "3.0.2",
             "source": {
@@ -6527,6 +6793,67 @@
             "time": "2022-01-02T09:55:41+00:00"
         },
         {
+            "name": "symfony/thanks",
+            "version": "v1.2.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/thanks.git",
+                "reference": "e9c4709560296acbd4fe9e12b8d57a925aa7eae8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/thanks/zipball/e9c4709560296acbd4fe9e12b8d57a925aa7eae8",
+                "reference": "e9c4709560296acbd4fe9e12b8d57a925aa7eae8",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0|^2.0",
+                "php": ">=5.5.9"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.2-dev"
+                },
+                "class": "Symfony\\Thanks\\Thanks"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Thanks\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                }
+            ],
+            "description": "Encourages sending ⭐ and 💵 to fellow PHP package maintainers (not limited to Symfony components)!",
+            "support": {
+                "issues": "https://github.com/symfony/thanks/issues",
+                "source": "https://github.com/symfony/thanks/tree/v1.2.10"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-14T17:47:37+00:00"
+        },
+        {
             "name": "symfony/translation",
             "version": "v6.0.6",
             "source": {
@@ -6839,6 +7166,53 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.4"
             },
             "time": "2021-12-08T09:12:39+00:00"
+        },
+        {
+            "name": "timothyasp/nova-color-field",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timothyasp/nova-color-field.git",
+                "reference": "6cc39bab252070d57019360ab3eb6b6637f994f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timothyasp/nova-color-field/zipball/6cc39bab252070d57019360ab3eb6b6637f994f6",
+                "reference": "6cc39bab252070d57019360ab3eb6b6637f994f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Timothyasp\\Color\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Timothyasp\\Color\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova Color Picker field.",
+            "keywords": [
+                "color picker",
+                "field",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/timothyasp/nova-color-field/issues",
+                "source": "https://github.com/timothyasp/nova-color-field/tree/1.0.4"
+            },
+            "time": "2020-10-26T16:36:00+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
