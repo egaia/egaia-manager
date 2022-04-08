@@ -3,9 +3,9 @@
 namespace App\Nova;
 
 use App\Enums\WasteType;
+use App\Nova\Filters\WasteTypeFilter;
 use GeneaLabs\NovaMapMarkerField\MapMarker;
 use Illuminate\Http\Request;
-use Inspheric\Fields\Indicator;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -66,8 +66,12 @@ class CollectPoint extends Resource
                 ->sortable(),
 
             MapMarker::make('Localisation')
+                ->searchProvider('ESRI')
+                ->searchProviderKey('AAPKf1873f47effb4257ab81a90568082a69qF1JyEsYitKxUykjNJeFplyRD_nxER99i7EsWrRJ1V1F8jmhy6kI5150ZJkPvbSL')
                 ->latitude('latitude')
                 ->longitude('longitude')
+                ->defaultLatitude(45.764043)
+                ->defaultLongitude(4.835659)
                 ->rules('required')
                 ->sortable(),
 
@@ -100,7 +104,9 @@ class CollectPoint extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new WasteTypeFilter()
+        ];
     }
 
     /**

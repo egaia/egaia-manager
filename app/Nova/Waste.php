@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Filters\WasteCategoryFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -83,7 +84,9 @@ class Waste extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new WasteCategoryFilter()
+        ];
     }
 
     /**

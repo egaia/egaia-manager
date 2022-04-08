@@ -54,6 +54,16 @@ class Category extends Resource
         return [
             ID::make('ID', 'id')->sortable(),
 
+            Text::make('Meta Title', 'meta_title')
+                ->rules('required', 'string', 'max:255')
+                ->showOnIndex(false)
+                ->sortable(),
+
+            Text::make('Meta Description', 'meta_description')
+                ->rules('required', 'string', 'max:255')
+                ->showOnIndex(false)
+                ->sortable(),
+
             Text::make('Nom', 'name')
                 ->rules('required', 'string', 'max:255')
                 ->sortable(),

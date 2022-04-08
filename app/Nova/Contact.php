@@ -2,6 +2,9 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ArchivedContact;
+use App\Nova\Actions\UnarchivedContact;
+use App\Nova\Filters\ArchivedContactFilter;
 use Illuminate\Http\Request;
 use Inspheric\Fields\Indicator;
 use Laravel\Nova\Fields\DateTime;
@@ -104,7 +107,9 @@ class Contact extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new ArchivedContactFilter()
+        ];
     }
 
     /**
@@ -126,6 +131,9 @@ class Contact extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new ArchivedContact(),
+            new UnarchivedContact()
+        ];
     }
 }

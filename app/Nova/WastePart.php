@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Enums\WasteType;
+use App\Nova\Filters\WasteTypeFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -91,7 +92,9 @@ class WastePart extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new WasteTypeFilter()
+        ];
     }
 
     /**

@@ -2,6 +2,9 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\InvalidChallengeUser;
+use App\Nova\Actions\ValidChallengeUser;
+use App\Nova\Filters\ChallengeUserFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -79,7 +82,9 @@ class ChallengeUser extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            new ChallengeUserFilter()
+        ];
     }
 
     /**
@@ -101,6 +106,11 @@ class ChallengeUser extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new ValidChallengeUser())
+                ->exceptOnIndex(),
+            (new InvalidChallengeUser())
+                ->exceptOnIndex(),
+        ];
     }
 }
