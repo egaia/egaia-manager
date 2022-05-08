@@ -17,6 +17,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "simplesquid/nova-enum-field": "^2.6",
+        "spatie/data-transfer-object": "^3.7",
         "timothyasp/nova-color-field": "^1.0"
     },
     "require-dev": {
