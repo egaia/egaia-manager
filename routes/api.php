@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WasteCategoryController;
+use App\Http\Controllers\WasteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,9 @@ Route::middleware('auth:api')->group(function () {
 Route::prefix('waste-categories')->group(function () {
     Route::get('', [WasteCategoryController::class, 'all']);
     Route::get('/{id}', [WasteCategoryController::class, 'show']);
+});
+
+Route::prefix('wastes')->group(function () {
+    Route::get('', [WasteController::class, 'all']);
+    Route::get('/{id}', [WasteController::class, 'show']);
 });

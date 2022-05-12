@@ -5,6 +5,8 @@ namespace App\Providers;
 
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryEloquent;
+use App\Repositories\Waste\WasteRepository;
+use App\Repositories\Waste\WasteRepositoryEloquent;
 use App\Repositories\WasteCategory\WasteCategoryRepository;
 use App\Repositories\WasteCategory\WasteCategoryRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +27,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             WasteCategoryRepository::class,
             WasteCategoryRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            WasteRepository::class,
+            WasteRepositoryEloquent::class
         );
     }
 

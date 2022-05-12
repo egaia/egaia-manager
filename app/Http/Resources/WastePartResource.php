@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\Collections\WastePartCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
 
-class WasteResource extends JsonResource
+class WastePartResource extends JsonResource
 {
     private bool $light;
 
@@ -24,21 +23,11 @@ class WasteResource extends JsonResource
      */
     public function toArray($request)
     {
-        $data = [
+        return [
             'id' => $this->resource->id,
             'name' => $this->resource->name,
-            'image' => asset('storage/'.$this->resource->image),
-            'category' => new WasteCategoryResource($this->resource->wasteCategory, $this->light)
+            'type' => $this->resource->type,
+            'trash_can' => new TrashCanResource($this->resource->trashCan)
         ];
-
-        if(!$this->light) {
-            $additionalData = [
-                'parts' => new WastePartCollection($this->resource->wasteParts)
-            ];
-
-            $data = array_merge($data, $additionalData);
-        }
-
-        return $data;
     }
 }
