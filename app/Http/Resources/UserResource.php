@@ -21,7 +21,7 @@ class UserResource extends JsonResource
             'birthdate' => $this->resource->birthdate,
             'email' => $this->resource->email,
             'points' => $this->resource->points,
-            'api_token' => $this->resource->api_token
+            'apiToken' => $this->resource->api_token
         ];
     }
 }

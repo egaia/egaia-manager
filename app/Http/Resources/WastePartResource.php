@@ -27,7 +27,7 @@ class WastePartResource extends JsonResource
             'id' => $this->resource->id,
             'name' => $this->resource->name,
             'type' => $this->resource->type,
-            'trash_can' => new TrashCanResource($this->resource->trashCan)
+            'trashCan' => new TrashCanResource($this->resource->trashCan)
         ];
     }
 }
