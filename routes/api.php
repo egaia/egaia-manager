@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\WasteCategoryController;
 use App\Http\Controllers\WasteController;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware('auth:api')->group(function () {
-
+    Route::prefix('challenges')->group(function () {
+        Route::get('/user', [ChallengeController::class, 'getByUser']);
+    });
 });
 
 Route::prefix('waste-categories')->group(function () {

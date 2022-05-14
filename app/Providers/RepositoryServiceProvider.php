@@ -3,6 +3,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Challenge\ChallengeRepository;
+use App\Repositories\Challenge\ChallengeRepositoryEloquent;
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryEloquent;
 use App\Repositories\Waste\WasteRepository;
@@ -32,6 +34,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             WasteRepository::class,
             WasteRepositoryEloquent::class
+        );
+
+        $this->app->bind(
+            ChallengeRepository::class,
+            ChallengeRepositoryEloquent::class
         );
     }
 
