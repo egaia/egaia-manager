@@ -21,6 +21,9 @@ class ValidChallengeUser extends Action
         } else {
             $challengeUser->valid = true;
             $challengeUser->save();
+            $user = $challengeUser->user;
+            $user->points += $challengeUser->challenge->points;
+            $user->save();
         }
     }
 
