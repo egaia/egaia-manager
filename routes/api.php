@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\CollectPointController;
 use App\Http\Controllers\WasteCategoryController;
 use App\Http\Controllers\WasteController;
 use Illuminate\Http\Request;
@@ -38,4 +39,8 @@ Route::prefix('waste-categories')->group(function () {
 Route::prefix('wastes')->group(function () {
     Route::get('', [WasteController::class, 'all']);
     Route::get('/{id}', [WasteController::class, 'show']);
+});
+
+Route::prefix('collect-points')->group(function () {
+    Route::get('', [CollectPointController::class, 'getAll']);
 });
