@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\PasswordUserRequest;
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\DTO\RegisterUserDTO;
+use App\Models\DTO\UpdateUserDTO;
 use App\Repositories\User\UserRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -34,8 +37,6 @@ class AuthController extends Controller
             ]);
 
         } catch (Throwable $exception) {
-
-            //dd($exception);
             return response()->json([
                 'success' => false,
                 'message' => $exception->getMessage()
@@ -86,6 +87,44 @@ class AuthController extends Controller
                 'success' => false,
                 'message' => 'Vous n\'êtes pas authentifié',
             ], 401);
+        }
+    }
+
+    public function checkPasswordValid(PasswordUserRequest $request): JsonResponse {
+        $user = \auth('api')->user();
+        $hasher = app('hash');
+
+        if($hasher->check($request->get('password'), $user->password)) {
+            return response()->json([
+                'success' => true
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Mot de passe incorrect'
+            ]);
+        }
+    }
+
+    public function update(UpdateUserRequest $request): JsonResponse {
+        $apiUser = \auth('api')->user();
+
+        $updateUserDTO = UpdateUserDTO::fromRequest($request);
+
+        try {
+
+            $user = $this->userRepository->update($apiUser, $updateUserDTO);
+
+            return response()->json([
+                'success' => true,
+                'user' => new UserResource($user)
+            ]);
+
+        } catch (Throwable $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], intval($exception->getCode()) !== 0 ? intval($exception->getCode()) : 500);
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories\User;
 
 use App\Models\DTO\RegisterUserDTO;
+use App\Models\DTO\UpdateUserDTO;
 use App\Models\User;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Hash;
@@ -35,6 +36,18 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         $user->setAttribute('email', $registerUserDTO->email);
         $user->setAttribute('password', Hash::make($registerUserDTO->password));
         $user->setAttribute('points', 0);
+        $user->saveOrFail();
+
+        return $user;
+    }
+
+    public function update(User $user, UpdateUserDTO $updateUserDTO): User
+    {
+        if($updateUserDTO->firstname != null) $user->setAttribute('firstname', $updateUserDTO->firstname);
+        if($updateUserDTO->lastname != null) $user->setAttribute('lastname', $updateUserDTO->lastname);
+        if($updateUserDTO->birthdate != null) $user->setAttribute('birthdate', $updateUserDTO->birthdate);
+        if($updateUserDTO->email != null) $user->setAttribute('email', $updateUserDTO->email);
+        if($updateUserDTO->password != null) $user->setAttribute('password', Hash::make($updateUserDTO->password));
         $user->saveOrFail();
 
         return $user;
