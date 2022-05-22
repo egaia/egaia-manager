@@ -42,7 +42,7 @@ class ChallengeController extends Controller
 
         return response()->json([
             'success' => true,
-            'currentChallenge' => new ChallengeResource($currentChallenge),
+            'currentChallenge' => $currentChallenge ? new ChallengeResource($currentChallenge) : null,
             'challenges' => $challenges
         ]);
     }

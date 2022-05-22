@@ -10,7 +10,7 @@ interface ChallengeRepository
 {
     public function getFromUser(User $user): Collection;
 
-    public function getCurrentChallenge(): Challenge;
+    public function getCurrentChallenge(): ?Challenge;
 
     public function allByMonthYear(): Collection;
 }

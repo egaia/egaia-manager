@@ -28,7 +28,7 @@ class ChallengeRepositoryEloquent extends BaseRepository implements ChallengeRep
             ->get();
     }
 
-    public function getCurrentChallenge(): Challenge
+    public function getCurrentChallenge(): ?Challenge
     {
         return $this->query()
             ->where('started_at', '<=', now())
