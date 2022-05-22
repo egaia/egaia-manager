@@ -52,7 +52,7 @@ class ChallengeRepositoryEloquent extends BaseRepository implements ChallengeRep
             $date = Carbon::createFromFormat('Y/m', $month['date_month']);
             $month['carbon_date'] = $date;
             $month['results'] = new ChallengeCollection($this->query()
-                ->whereDate('started_at', '<=', now())
+                ->where('started_at', '<=', now())
                 ->whereMonth('started_at', $date->month)
                 ->whereYear('started_at', $date->year)
                 ->orderBy('started_at')
