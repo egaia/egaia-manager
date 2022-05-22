@@ -29,6 +29,7 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware('auth:api')->group(function () {
     Route::prefix('challenges')->group(function () {
+        Route::get('', [ChallengeController::class, 'all']);
         Route::get('/user', [ChallengeController::class, 'getByUser']);
     });
 });

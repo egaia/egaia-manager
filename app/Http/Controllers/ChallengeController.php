@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ChallengeResource;
 use App\Http\Resources\Collections\ChallengeCollection;
 use App\Repositories\Challenge\ChallengeRepository;
 use Illuminate\Http\JsonResponse;
@@ -33,5 +34,16 @@ class ChallengeController extends Controller
                 'message' => $exception->getMessage()
             ], intval($exception->getCode()) !== 0 ? intval($exception->getCode()) : 500);
         }
+    }
+
+    public function all(Request $request): JsonResponse {
+        $currentChallenge = $this->challengeRepository->getCurrentChallenge();
+        $challenges = $this->challengeRepository->allByMonthYear();
+
+        return response()->json([
+            'success' => true,
+            'currentChallenge' => new ChallengeResource($currentChallenge),
+            'challenges' => $challenges
+        ]);
     }
 }

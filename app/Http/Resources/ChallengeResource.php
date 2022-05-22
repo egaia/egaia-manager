@@ -34,10 +34,17 @@ class ChallengeResource extends JsonResource
         ];
 
         if(!$this->light) {
-            $additionalData = [
-                'participations' => $this->resource->users
-            ];
-            $data = array_merge($data, $additionalData);
+            $participation = $this->resource->users()->where('users.id', auth('api')->user()->id)->first();
+
+            if($participation) {
+                $additionalData = [
+                    'participation' => [
+                        'picture' => asset('storage/'.$participation->pivot->picture),
+                        'valid' => $participation->pivot->valid
+                    ]
+                ];
+                $data = array_merge($data, $additionalData);
+            }
         }
 
         return $data;
