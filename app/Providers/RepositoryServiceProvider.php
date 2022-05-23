@@ -5,6 +5,8 @@ namespace App\Providers;
 
 use App\Repositories\Challenge\ChallengeRepository;
 use App\Repositories\Challenge\ChallengeRepositoryEloquent;
+use App\Repositories\ChallengeUser\ChallengeUserRepository;
+use App\Repositories\ChallengeUser\ChallengeUserRepositoryEloquent;
 use App\Repositories\CollectPoint\CollectPointRepository;
 use App\Repositories\CollectPoint\CollectPointRepositoryEloquent;
 use App\Repositories\User\UserRepository;
@@ -46,6 +48,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CollectPointRepository::class,
             CollectPointRepositoryEloquent::class,
+        );
+
+        $this->app->bind(
+            ChallengeUserRepository::class,
+            ChallengeUserRepositoryEloquent::class,
         );
     }
 
