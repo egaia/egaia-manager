@@ -52,6 +52,8 @@ class AuthController extends Controller
                 $user = $this->userRepository->findOrFailByEmail($credentials['email']);
 
                 $user->last_login_at = now();
+                $user->save();
+                
                 return response()->json([
                     'success' => true,
                     'user' => new UserResource($user)
@@ -80,6 +82,7 @@ class AuthController extends Controller
 
         if($user) {
             $user->last_login_at = now();
+            $user->save();
 
             return response()->json([
                 'success' => true,
