@@ -52,7 +52,7 @@ class ChallengeController extends Controller
     }
 
     public function participate(ParticipateToChallengeRequest $request): JsonResponse {
-        $path = \request()->file('picture')->store('public/challenges');
+        $path = \request()->file('picture')->store('public');
         try {
             $challengeUser = $this->challengeUserRepository->store((int) $request->get('challenge_id'),$path,  auth('api')->user());
 
