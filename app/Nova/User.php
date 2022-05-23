@@ -83,7 +83,7 @@ class User extends Resource
                 ->readonly(),
 
             DateTime::make('Dernière connexion', 'last_login_at')
-                ->format('DD/MM/Y')
+                ->format('DD/MM/Y h:mm')
                 ->sortable()
                 ->readonly(),
 
