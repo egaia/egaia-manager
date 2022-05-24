@@ -9,6 +9,10 @@ use App\Repositories\ChallengeUser\ChallengeUserRepository;
 use App\Repositories\ChallengeUser\ChallengeUserRepositoryEloquent;
 use App\Repositories\CollectPoint\CollectPointRepository;
 use App\Repositories\CollectPoint\CollectPointRepositoryEloquent;
+use App\Repositories\Promotion\PromotionRepository;
+use App\Repositories\Promotion\PromotionRepositoryEloquent;
+use App\Repositories\PromotionUser\PromotionUserRepository;
+use App\Repositories\PromotionUser\PromotionUserRepositoryEloquent;
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryEloquent;
 use App\Repositories\Waste\WasteRepository;
@@ -53,6 +57,16 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ChallengeUserRepository::class,
             ChallengeUserRepositoryEloquent::class,
+        );
+
+        $this->app->bind(
+            PromotionUserRepository::class,
+            PromotionUserRepositoryEloquent::class,
+        );
+
+        $this->app->bind(
+            PromotionRepository::class,
+            PromotionRepositoryEloquent::class,
         );
     }
 

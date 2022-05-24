@@ -88,6 +88,8 @@ class User extends Resource
                 ->readonly(),
 
             HasMany::make('Participations aux défis', 'challengeUsers', ChallengeUser::class),
+
+            HasMany::make('Promotions utilisées', 'promotionUsers', PromotionUser::class),
         ];
     }
 

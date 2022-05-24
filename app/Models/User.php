@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Pivots\ChallengeUser;
+use App\Models\Pivots\PromotionUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -45,5 +46,13 @@ class User extends Authenticatable
 
     public function challengeUsers(): HasMany {
         return $this->hasMany(ChallengeUser::class);
+    }
+
+    public function promotions(): BelongsToMany {
+        return $this->belongsToMany(Promotion::class, 'promotion_user');
+    }
+
+    public function promotionUsers(): HasMany {
+        return $this->hasMany(PromotionUser::class);
     }
 }

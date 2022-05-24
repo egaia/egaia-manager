@@ -8,7 +8,9 @@ use App\Nova\Challenge;
 use App\Nova\ChallengeUser;
 use App\Nova\CollectPoint;
 use App\Nova\Contact;
+use App\Nova\Partner;
 use App\Nova\Post;
+use App\Nova\Promotion;
 use App\Nova\TrashCan;
 use App\Nova\User;
 use App\Nova\Waste;
@@ -107,6 +109,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                         'resources' => [
                             Challenge::class,
                             ChallengeUser::class
+                        ]
+                    ]),
+                    TopLevelResource::make([
+                        'label' => 'Bons plans',
+                        'resources' => [
+                            Partner::class,
+                            Promotion::class
                         ]
                     ]),
                     TopLevelResource::make([
