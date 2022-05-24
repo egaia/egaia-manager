@@ -33,6 +33,7 @@ class ChallengeRepositoryEloquent extends BaseRepository implements ChallengeRep
         return $this->query()
             ->where('started_at', '<=', now())
             ->where('ended_at', '>=', now())
+            ->orderBy('ended_at')
             ->first();
     }
 

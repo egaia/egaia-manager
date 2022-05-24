@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ParticipateToChallengeRequest;
 use App\Http\Resources\ChallengeResource;
 use App\Http\Resources\Collections\ChallengeCollection;
+use App\Models\Challenge;
+use App\Models\Pivots\ChallengeUser;
 use App\Repositories\Challenge\ChallengeRepository;
 use App\Repositories\ChallengeUser\ChallengeUserRepository;
 use Illuminate\Http\JsonResponse;
@@ -52,19 +54,55 @@ class ChallengeController extends Controller
     }
 
     public function participate(ParticipateToChallengeRequest $request): JsonResponse {
-        $path = \request()->file('picture')->store('public');
-        try {
-            $challengeUser = $this->challengeUserRepository->store((int) $request->get('challenge_id'),$path,  auth('api')->user());
+        $challenge = Challenge::find((int) $request->get('challenge_id'));
+        $user = auth('api')->user();
 
-            return response()->json([
-                'success' => true,
-                'challenge_user' => $challengeUser
-            ]);
-        } catch (Throwable $exception) {
+        if($challenge && $user) {
+            $challengeUser = ChallengeUser::query()
+                ->where('challenge_id', $challenge->id)
+                ->where('user_id', $user->id)
+                ->first();
+
+            if(!$challengeUser) {
+                if($challenge->started_at > now() ) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Ce défi n\'a pas commencé'
+                    ], 403);
+                }
+                if($challenge->ended_at < now()) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Ce défi est terminé'
+                    ], 403);
+                }
+
+                try {
+                    $path = \request()->file('picture')->store('public');
+
+                    $challengeUser = $this->challengeUserRepository->store($challenge, $user,  $path);
+
+                    return response()->json([
+                        'success' => true,
+                        'challenge_user' => $challengeUser
+                    ]);
+                } catch (Throwable $exception) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => $exception->getMessage()
+                    ], intval($exception->getCode()) !== 0 ? intval($exception->getCode()) : 500);
+                }
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Vous avez déjà participé à ce défi'
+                ], 403);
+            }
+        } else {
             return response()->json([
                 'success' => false,
-                'message' => $exception->getMessage()
-            ], intval($exception->getCode()) !== 0 ? intval($exception->getCode()) : 500);
+                'message' => 'Catégorie introuvable'
+            ], 404);
         }
     }
 }
