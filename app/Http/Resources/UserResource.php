@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\Collections\ChallengeCollection;
+use App\Http\Resources\Collections\PromotionCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -21,7 +23,8 @@ class UserResource extends JsonResource
             'birthdate' => $this->resource->birthdate,
             'email' => $this->resource->email,
             'points' => $this->resource->points,
-            'apiToken' => $this->resource->api_token
+            'apiToken' => $this->resource->api_token,
+            'historic' => $this->resource->getHistoric()
         ];
     }
 }

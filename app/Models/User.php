@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -49,10 +50,37 @@ class User extends Authenticatable
     }
 
     public function promotions(): BelongsToMany {
-        return $this->belongsToMany(Promotion::class, 'promotion_user');
+        return $this->belongsToMany(Promotion::class)
+            ->using(PromotionUser::class);
     }
 
     public function promotionUsers(): HasMany {
         return $this->hasMany(PromotionUser::class);
+    }
+
+    public function getHistoric(): array {
+        $historic = [];
+
+        foreach ($this->challengeUsers as $challengeUser) {
+            $historic[] = [
+                'id' => $challengeUser->challenge->id,
+                'label' => $challengeUser->challenge->title,
+                'type' => 'challenge',
+                'points' => $challengeUser->challenge->points,
+                'date' => $challengeUser->created_at
+            ];
+        }
+
+        foreach ($this->promotionUsers as $promotionUser) {
+            $historic[] = [
+                'id' => $promotionUser->promotion->id,
+                'label' => $promotionUser->promotion->partner->name.': '.$promotionUser->promotion->label,
+                'type' => 'promotion',
+                'points' => $promotionUser->promotion->cost,
+                'date' => $promotionUser->created_at
+            ];
+        }
+
+        return collect($historic)->sortByDesc('date')->toArray();
     }
 }
