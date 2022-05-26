@@ -28,10 +28,13 @@ Route::prefix('auth')->group(function () {
     Route::post('update', [AuthController::class, 'update'])->middleware('auth:api');
 });
 
-Route::prefix('challenges')->group(function () {
-    Route::get('', [ChallengeController::class, 'all']);
-    Route::get('/user', [ChallengeController::class, 'getByUser'])->middleware('auth:api');
-    Route::post('/participate', [ChallengeController::class, 'participate'])->middleware('auth:api');
+Route::middleware('auth:api')->group(function () {
+    Route::prefix('challenges')->group(function () {
+        Route::get('', [ChallengeController::class, 'all']);
+        Route::get('/user', [ChallengeController::class, 'getByUser']);
+        Route::post('/participate', [ChallengeController::class, 'participate']);
+    });
+
 });
 
 Route::prefix('promotions')->group(function () {
