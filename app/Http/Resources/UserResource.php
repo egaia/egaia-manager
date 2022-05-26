@@ -21,6 +21,7 @@ class UserResource extends JsonResource
             'firstname' => $this->resource->firstname,
             'lastname' => $this->resource->lastname,
             'birthdate' => $this->resource->birthdate,
+            'image' => $this->resource->image ? asset('storage/'.$this->resource->image) : asset('assets/utilisateur.png'),
             'email' => $this->resource->email,
             'points' => $this->resource->points,
             'apiToken' => $this->resource->api_token,

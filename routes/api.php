@@ -25,7 +25,7 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::get('user', [AuthController::class, 'getByApiToken']);
     Route::get('check-password', [AuthController::class, 'checkPasswordValid'])->middleware('auth:api');
-    Route::put('update', [AuthController::class, 'update'])->middleware('auth:api');
+    Route::post('update', [AuthController::class, 'update'])->middleware('auth:api');
 });
 
 Route::middleware('auth:api')->group(function () {

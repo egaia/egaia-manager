@@ -53,7 +53,7 @@ class AuthController extends Controller
 
                 $user->last_login_at = now();
                 $user->save();
-                
+
                 return response()->json([
                     'success' => true,
                     'user' => new UserResource($user)
@@ -113,9 +113,18 @@ class AuthController extends Controller
     }
 
     public function update(UpdateUserRequest $request): JsonResponse {
+
         $apiUser = \auth('api')->user();
 
-        $updateUserDTO = UpdateUserDTO::fromRequest($request);
+        $image = $request->file('image');
+
+        if($image) {
+            $path = \request()->file('image')->store('public');
+        } else {
+            $path = null;
+        }
+
+        $updateUserDTO = UpdateUserDTO::fromRequest($request, $path);
 
         try {
 
