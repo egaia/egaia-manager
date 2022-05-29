@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Timothyasp\Color\Color;
@@ -53,6 +54,9 @@ class TrashCan extends Resource
             Text::make('Nom', 'name')
                 ->rules('required', 'string', 'max:255')
                 ->sortable(),
+
+            Image::make('Image', 'image')
+                ->nullable(),
 
             Color::make('Couleur', 'color')
                 ->rules('required', 'string', 'max:255')

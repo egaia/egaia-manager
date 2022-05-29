@@ -27,6 +27,7 @@ class TrashCanResource extends JsonResource
         return [
             'id' => $this->resource->id,
             'name' => $this->resource->name,
+            'image' => $this->resource->image ? asset('storage/'.$this->resource->image) : null,
             'color' => $this->resource->color,
         ];
     }
