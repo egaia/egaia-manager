@@ -13,6 +13,7 @@ class WasteCategoryRepositoryEloquent extends BaseRepository implements WasteCat
     public function all(): Collection
     {
         return $this->query()
+            ->whereHas('wastes')
             ->get();
     }
 
