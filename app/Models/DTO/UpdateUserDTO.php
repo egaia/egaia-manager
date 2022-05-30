@@ -13,6 +13,7 @@ class UpdateUserDTO extends DataTransferObject
     public ?string $image;
     public ?string $email;
     public ?string $password;
+    public ?bool $removeImage;
 
     public static function fromRequest(Request $request, ?string $path): self {
         return new self([
@@ -22,6 +23,7 @@ class UpdateUserDTO extends DataTransferObject
             'image' => $path,
             'email' => $request->get('email'),
             'password' => $request->get('password'),
+            'removeImage' => $request->get('remove_image'),
         ]);
     }
 }

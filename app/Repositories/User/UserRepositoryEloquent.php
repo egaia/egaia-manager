@@ -46,7 +46,11 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         if($updateUserDTO->firstname != null) $user->setAttribute('firstname', $updateUserDTO->firstname);
         if($updateUserDTO->lastname != null) $user->setAttribute('lastname', $updateUserDTO->lastname);
         if($updateUserDTO->birthdate != null) $user->setAttribute('birthdate', $updateUserDTO->birthdate);
-        if($updateUserDTO->image != null) $user->setAttribute('image', explode('/', $updateUserDTO->image)[1]);
+        if($updateUserDTO->image != null) {
+            $user->setAttribute('image', explode('/', $updateUserDTO->image)[1]);
+        } else if ($updateUserDTO->removeImage === true) {
+            $user->setAttribute('image', null);
+        }
         if($updateUserDTO->email != null) $user->setAttribute('email', $updateUserDTO->email);
         if($updateUserDTO->password != null) $user->setAttribute('password', Hash::make($updateUserDTO->password));
         $user->saveOrFail();

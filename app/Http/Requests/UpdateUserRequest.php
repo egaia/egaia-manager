@@ -16,6 +16,7 @@ class UpdateUserRequest extends JsonApiRequest {
             'image' => 'nullable|image|mimes:jpeg,jpg,png',
             'email' => 'nullable|max:255|email|unique:users,email',
             'password' => 'nullable|string|min:8|max:255',
+            'remove_image' => 'nullable|boolean'
         ];
     }
 
