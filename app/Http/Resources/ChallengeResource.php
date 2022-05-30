@@ -27,7 +27,6 @@ class ChallengeResource extends JsonResource
         $data = [
             'id' => $this->resource->id,
             'title' => $this->resource->title,
-            'content' => $this->resource->content,
             'points' => $this->resource->points,
             'startedAt' => $this->resource->started_at,
             'endedAt' => $this->resource->ended_at,
