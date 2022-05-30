@@ -67,7 +67,8 @@ class User extends Authenticatable
                 'label' => $challengeUser->challenge->title,
                 'type' => 'challenge',
                 'points' => $challengeUser->challenge->points,
-                'date' => $challengeUser->created_at
+                'date' => $challengeUser->created_at,
+                'valid' => $challengeUser->valid
             ];
         }
 
@@ -77,7 +78,8 @@ class User extends Authenticatable
                 'label' => $promotionUser->promotion->partner->name.': '.$promotionUser->promotion->label,
                 'type' => 'promotion',
                 'points' => $promotionUser->promotion->cost,
-                'date' => $promotionUser->created_at
+                'date' => $promotionUser->created_at,
+                'valid' => false
             ];
         }
 
