@@ -58,11 +58,6 @@ class Challenge extends Resource
                 ->rules('required', 'string', 'max:255')
                 ->sortable(),
 
-            Quilljs::make('Contenu', 'content')
-                ->rules('required', 'string')
-                ->alwaysShow()
-                ->sortable(),
-
             Number::make('Points', 'points')
                 ->rules('required', 'integer')
                 ->sortable(),
